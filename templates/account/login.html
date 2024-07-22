@@ -15,23 +15,25 @@
                 <h2 class="h3 text-center mb-3">
                     Login to your account
                 </h2>
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-title">Uh error...</h4>
+                    <div class="text-secondary">{{ form.errors }}</div>
+                </div>
+                {% endif %}
                 <form method="post">
                     <div class="mb-3">
-                        <label class="form-label">Email address</label>
-                        <input type="email" class="form-control" placeholder="your@email.com">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">Email address</label>
+                        {{ form.email }}
                     </div>
                     <div class="mb-2">
-                        <label class="form-label">
-                            Password
-                            <!--<span class="form-label-description"><a href="">I forgot password</a></span>-->
-                        </label>
-                        <div class="input-group input-group-flat">
-                            <input type="password" class="form-control" placeholder="Your password">
-                        </div>
+                        <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                        <div class="input-group input-group-flat">{{ form.password }}</div>
                     </div>
                     <div class="form-footer">
                         <button type="submit" class="btn btn-primary w-100">Sign in</button>
                     </div>
+                    {% csrf_token %}
                 </form>
                 <div class="text-center text-secondary mt-3">
                     Don't have account yet? <a href="" tabindex="-1">Join our discord</a>

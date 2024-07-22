@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import UserLogin as UserLoginForm
 from .models import User
 
+
 # Create your views here.
 def login(request):
     if request.method == "POST":

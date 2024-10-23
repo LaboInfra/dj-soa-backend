@@ -9,6 +9,11 @@ serv:
 	poetry run python manage.py runserver
 
 reset:
-	rm db.sqlite3
+	rm -f db.sqlite3
+	make migra
+	make admin
+
+init:
+	poetry install
 	make migra
 	make admin
